@@ -16,7 +16,7 @@
 
 3. Установить параметры для подключения к БД в файле parameters.yml.dist
 
-database_host database_port database_name database_user database_password
+  database_host database_port database_name database_user database_password
 
 4. Переименовать файл parameters.yml.dist в parameters.yml
 
