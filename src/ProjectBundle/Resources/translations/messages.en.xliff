@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="page.title">
+                <source>page.title</source>
+                <target>Address Table</target>
+            </trans-unit>
+            <trans-unit id="page.records">
+                <source>page.records</source>
+                <target>Records on page</target>
+            </trans-unit>
+            <trans-unit id="page.records_total">
+                <source>page.records_total</source>
+                <target>Total records</target>
+            </trans-unit>
+            <trans-unit id="page.language">
+                <source>page.language</source>
+                <target>Language</target>
+            </trans-unit>
+            <trans-unit id="pagination.first">
+                <source>pagination.first</source>
+                <target>First</target>
+            </trans-unit>
+            <trans-unit id="pagination.previous">
+                <source>pagination.previous</source>
+                <target>Previous</target>
+            </trans-unit>
+            <trans-unit id="pagination.next">
+                <source>pagination.next</source>
+                <target>Next</target>
+            </trans-unit>
+            <trans-unit id="pagination.last">
+                <source>pagination.last</source>
+                <target>Last</target>
+            </trans-unit>
+            <trans-unit id="table_caption.country">
+                <source>table_caption.country</source>
+                <target>Country</target>
+            </trans-unit>
+            <trans-unit id="table_caption.city">
+                <source>table_caption.city</source>
+                <target>City</target>
+            </trans-unit>
+            <trans-unit id="table_caption.street">
+                <source>table_caption.street</source>
+                <target>Street</target>
+            </trans-unit>
+            <trans-unit id="table_caption.home">
+                <source>table_caption.home</source>
+                <target>Home</target>
+            </trans-unit>
+            <trans-unit id="table_caption.zipcode">
+                <source>table_caption.zipcode</source>
+                <target>Zipcode</target>
+            </trans-unit>
+            <trans-unit id="table_caption.date">
+                <source>table_caption.date</source>
+                <target>Date</target>
+            </trans-unit>
+            <trans-unit id="result.no_result_found">
+                <source>result.results_not_found</source>
+                <target>Results noy found.</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

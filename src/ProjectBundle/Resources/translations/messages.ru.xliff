@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="page.title">
+                <source>page.title</source>
+                <target>Таблица адресов</target>
+            </trans-unit>
+            <trans-unit id="page.records">
+                <source>page.records</source>
+                <target>Записей на странице</target>
+            </trans-unit>
+            <trans-unit id="page.records_total">
+                <source>page.records_total</source>
+                <target>Всего записей</target>
+            </trans-unit>
+            <trans-unit id="page.language">
+                <source>page.language</source>
+                <target>Язык</target>
+            </trans-unit>
+            <trans-unit id="pagination.first">
+                <source>pagination.first</source>
+                <target>Первая</target>
+            </trans-unit>
+            <trans-unit id="pagination.previous">
+                <source>pagination.previous</source>
+                <target>Предыдущая</target>
+            </trans-unit>
+            <trans-unit id="pagination.next">
+                <source>pagination.next</source>
+                <target>Следующая</target>
+            </trans-unit>
+            <trans-unit id="pagination.last">
+                <source>pagination.last</source>
+                <target>Последняя</target>
+            </trans-unit>
+            <trans-unit id="table_caption.country">
+                <source>table_caption.country</source>
+                <target>Страна</target>
+            </trans-unit>
+            <trans-unit id="table_caption.city">
+                <source>table_caption.city</source>
+                <target>Город</target>
+            </trans-unit>
+            <trans-unit id="table_caption.street">
+                <source>table_caption.street</source>
+                <target>Улица</target>
+            </trans-unit>
+            <trans-unit id="table_caption.home">
+                <source>table_caption.home</source>
+                <target>Дом</target>
+            </trans-unit>
+            <trans-unit id="table_caption.zipcode">
+                <source>table_caption.zipcode</source>
+                <target>Индекс</target>
+            </trans-unit>
+            <trans-unit id="table_caption.date">
+                <source>table_caption.date</source>
+                <target>Дата</target>
+            </trans-unit>
+            <trans-unit id="result.no_result_found">
+                <source>result.results_not_found</source>
+                <target>Ничего не найдено.</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

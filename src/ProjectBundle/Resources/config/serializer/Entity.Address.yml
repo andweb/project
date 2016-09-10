@@ -1,0 +1,15 @@
+ProjectBundle\Entity\Address:
+    exclusion_policy: ALL
+    properties:
+        country:
+            expose: true
+        city:
+            expose: true
+        street:
+            expose: true
+        home:
+            expose: true
+        zipcode:
+            expose: true
+        createdAt:
+            expose: true

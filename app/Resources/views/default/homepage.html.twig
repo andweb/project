@@ -1,0 +1,123 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'page.title'|trans|raw }}{% endblock %}
+
+{% block body %}
+
+    <div class="container" ng-controller="AddressListCtrl">  
+        <div class="page-header">
+            <div class="row">
+                <div class="col-sm-4 col-sm-offset-8 text-right">
+                {{ 'page.language'|trans|raw }}:
+                
+                {% if app.request.locale == 'en' %}
+                    English | <a href="/ru">Russian</a>
+                {% elseif app.request.locale == 'ru' %}
+                    <a href="/en">Английский</a> | Русский
+                {% endif %}
+                </div>
+            </div>
+            
+            <h1>{{ 'page.title'|trans|raw }}</h1>
+        </div>      
+
+        <div class="panel">            
+            <form name="filterForm" class="form-inline">
+            <table class="table table-hover">
+                <thead>
+                    <tr style="cursor:pointer;">
+                        <th>#</th>
+                        <th ng-click="sortBy('country')">{{ 'table_caption.country'|trans|raw }} {% verbatim %}<span ng-if="config.sortby=='country'" class="{{setClass()}}"></span>{% endverbatim %}</th>
+                        <th ng-click="sortBy('city')">{{ 'table_caption.city'|trans|raw }} {% verbatim %}<span ng-if="config.sortby=='city'" class="{{setClass()}}"></span>{% endverbatim %}</th>
+                        <th ng-click="sortBy('street')">{{ 'table_caption.street'|trans|raw }} {% verbatim %}<span ng-if="config.sortby=='street'" class="{{setClass()}}"></span>{% endverbatim %}</th>
+                        <th ng-click="sortBy('home')">{{ 'table_caption.home'|trans|raw }} {% verbatim %}<span ng-if="config.sortby=='home'" class="{{setClass()}}"></span>{% endverbatim %}</th>
+                        <th ng-click="sortBy('zipcode')">{{ 'table_caption.zipcode'|trans|raw }} {% verbatim %}<span ng-if="config.sortby=='zipcode'" class="{{setClass()}}"></span>{% endverbatim %}</th>
+                        <th ng-click="sortBy('date')">{{ 'table_caption.date'|trans|raw }} {% verbatim %}<span ng-if="config.sortby=='date'" class="{{setClass()}}"></span>{% endverbatim %}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <button class="btn btn-primary" ng-click="refreshButton()">
+                                <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+                            </button>
+                        </td>
+                        <td><input type="text" class="form-control" name="country" ng-change="change()" ng-minlength="3" ng-model="config.f_country" /></td>
+                        <td><input type="text" class="form-control" name="city" ng-change="change()" ng-minlength="3" ng-model="config.f_city" /></td>
+                        <td><input type="text" class="form-control" name="street" ng-change="change()" ng-minlength="3" ng-model="config.f_street" /></td>
+                        <td><div class="input-group">
+                                <input type="number" name="home_min" class="form-control" style="min-width:60px; max-width:60px;" ng-change="change()" ng-model="config.f_home_min" min="1" max="99" ng-min="1" ng-max="99" />
+                                <span class="input-group-addon">-</span>
+                                <input type="number" name="home_max" class="form-control" style="min-width:60px; max-width:60px;" ng-change="change()" ng-model="config.f_home_max" min="1" max="99" ng-min="1" ng-max="99" />
+                            </div>
+                        </td>
+                        <td><input type="text" name="zipcode" class="form-control" ng-change="change()" ng-minlength="3" ng-model="config.f_zipcode" /></td>
+                        <td><input type="text" class="form-control" ng-change="change()" ng-pattern="/^\d{2}.\d{2}.\d{4} \d{2}:\d{2} - \d{2}.\d{2}.\d{4} \d{2}:\d{2}$/" name="daterange" ng-model="config.f_date" /></td>
+                    </tr>
+                    {% verbatim %}
+                    <tr ng-repeat="address in data.addresses">
+                        <td>{{100*(currentPage-1)+$index+1}}</td>
+                        <td style="{{setStyle(filterForm.country.$valid && config.f_country.length || config.sortby=='country')}}">{{address.country}}</td>
+                        <td style="{{setStyle(filterForm.city.$valid && config.f_city.length || config.sortby=='city')}}">{{address.city}}</td>
+                        <td style="{{setStyle(filterForm.street.$valid && config.f_street.length || config.sortby=='street')}}">{{address.street}}</td>
+                        <td style="{{setStyle(filterForm.home_min.$valid && filterForm.home_min.$valid || config.sortby=='home')}}" class="text-center">{{address.home}}</td>
+                        <td style="{{setStyle(filterForm.zipcode.$valid && config.f_zipcode.length || config.sortby=='zipcode')}}">{{address.zipcode}}</td>
+                        <td style="{{setStyle(filterForm.daterange.$valid && config.f_date.length || config.sortby=='date')}}">{{address.created_at | date:'dd.MM.yyyy HH:mm'}}</td>
+                    </tr>
+                    {% endverbatim %}
+                </tbody>
+            </table>
+            </form>
+            
+            <p>{{ 'page.records'|trans|raw }}: <span ng-bind="data.addresses.length"></span></p>
+            <p>{{ 'page.records_total'|trans|raw }}: <span ng-bind="data.all"></span></p>
+            
+            <div class="navigation text-center">
+                <pagination 
+                    ng-model="currentPage"
+                    items-per-page="100"
+                    total-items="totalItems"
+                    max-size="maxSize"  
+                    boundary-links="true"
+                    first-text="{{ 'pagination.first'|trans|raw }}"
+                    previous-text="{{ 'pagination.previous'|trans|raw }}"
+                    next-text="{{ 'pagination.next'|trans|raw }}"
+                    last-text="{{ 'pagination.last'|trans|raw }}">
+                </pagination>
+            </div>    
+        </div>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+        <link rel="stylesheet" href="/lib/css/bootstrap.css">
+        <link rel="stylesheet" href="/lib/css/bootstrap-theme.css">
+        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap/latest/css/bootstrap.css" />
+        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+        
+{% endblock %}
+{% block javascripts %}
+        <!-- Include Required Prerequisites -->
+        <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
+        <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+        <!-- Include Date Range Picker -->
+        <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+
+        <script src="/lib/angular.js"></script>
+        <script data-require="ui-bootstrap@*" data-semver="0.12.1" src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.1.min.js"></script>
+        <script src="/lib/adrApp.js"></script>
+        
+        <script type="text/javascript">
+        $(function() {
+            $('input[name="daterange"]').daterangepicker({
+                timePicker: true,
+                timePickerIncrement: 30,
+                locale: {
+                    format: 'DD.MM.YYYY hh:mm'
+                },
+                startDate: '01.01.2015',
+                endDate: '31.12.2015'
+           });
+        });
+        </script>
+{% endblock %}
