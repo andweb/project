@@ -15,11 +15,8 @@
   ```
 
 3. Установить параметры для подключения к БД в файле parameters.yml.dist
-* database_host
-* database_port
-* database_name
-* database_user
-* database_password
+
+database_host database_port database_name database_user database_password
 
 4. Переименовать файл parameters.yml.dist в parameters.yml
 
@@ -33,17 +30,15 @@
   php app/console doctrine:schema:create
   ```
 
-7. Загрузить тестовые данные можно командой
+7. Загрузить тестовые данные из дампа
   ```bash
   php app/console doctrine:fixtures:load
   ```
-
-либо загрузить данные из дампа
-
-dump_sql/dump_lite.sql - содержит 61724 записей (предпочтительнее)
+  
+  либо загрузить данные из дампа
+  dump_sql/dump_lite.sql - содержит 61724 записей (предпочтительнее)
 
 8. Запустить тестовый сервер
   ```bash
   php app/console server:run
   ```
-  
