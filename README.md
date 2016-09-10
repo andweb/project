@@ -16,7 +16,11 @@
 
 3. Установить параметры для подключения к БД в файле parameters.yml.dist
 
-  database_host database_port database_name database_user database_password
+  database_host
+  database_port
+  database_name
+  database_user
+  database_password
 
 4. Переименовать файл parameters.yml.dist в parameters.yml
 
@@ -36,7 +40,7 @@
   ```
   
   либо загрузить данные из дампа
-  dump_sql/dump_lite.sql - содержит 61724 записей (предпочтительнее)
+  dump_sql/dump_lite.sql - содержит 61724 записей
 
 8. Запустить тестовый сервер
   ```bash
